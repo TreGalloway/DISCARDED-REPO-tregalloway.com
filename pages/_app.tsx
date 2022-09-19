@@ -5,9 +5,30 @@ import {
     MantineProvider,
     ColorScheme,
     ColorSchemeProvider,
+    AppShell,
+    Footer,
+    Text,
+    Header,
+    Group,
+    Container,
+    ActionIcon,
+    createStyles,
 } from '@mantine/core'
+import { IconCommand } from '@tabler/icons'
+
+const HEADER_HEIGHT = 60
+
+const useStyles = createStyles((theme) => ({
+    inner: {
+        height: HEADER_HEIGHT,
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+}))
 
 export default function App(props: AppProps) {
+    const { classes } = useStyles()
     const { Component, pageProps } = props
     const [colorScheme, setColorScheme] = useState<ColorScheme>('light')
     const toggleColorScheme = (value?: ColorScheme) =>
@@ -35,7 +56,37 @@ export default function App(props: AppProps) {
                         fontFamily: 'Oswald,sans-serif',
                     }}
                 >
-                    <Component {...pageProps} />
+                    <AppShell
+                        header={
+                            <Header
+                                height={HEADER_HEIGHT}
+                                sx={{ borderBottom: 0 }}
+                                mb={120}
+                            >
+                                <Container className={classes.inner} fluid>
+                                    <Group>
+                                        <Text> Logo</Text>
+                                    </Group>
+
+                                    <ActionIcon
+                                        size={'xl'}
+                                        style={{ alignItems: 'right' }}
+                                    >
+                                        <IconCommand size={34} />
+                                    </ActionIcon>
+                                </Container>
+                            </Header>
+                        }
+                        footer={
+                            <Footer height={60} p="md">
+                                {' '}
+                                Footer
+                            </Footer>
+                        }
+                    >
+                        {' '}
+                        <Component {...pageProps} />
+                    </AppShell>
                 </MantineProvider>
             </ColorSchemeProvider>
         </>
