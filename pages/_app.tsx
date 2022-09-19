@@ -69,10 +69,11 @@ export default function App(props: AppProps) {
                                     </Group>
 
                                     <ActionIcon
-                                        size={'xl'}
+                                        color={'dark.5'}
+                                        size={'lg'}
                                         style={{ alignItems: 'right' }}
                                     >
-                                        <IconCommand size={34} />
+                                        <IconCommand size={26} />
                                     </ActionIcon>
                                 </Container>
                             </Header>
