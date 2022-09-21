@@ -13,6 +13,7 @@ import {
     Container,
     ActionIcon,
     createStyles,
+    Tooltip,
 } from '@mantine/core'
 import { IconCommand } from '@tabler/icons'
 
@@ -33,6 +34,7 @@ export default function App(props: AppProps) {
     const [colorScheme, setColorScheme] = useState<ColorScheme>('light')
     const toggleColorScheme = (value?: ColorScheme) =>
         setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
+    const light = colorScheme === 'light'
 
     return (
         <>
@@ -61,20 +63,26 @@ export default function App(props: AppProps) {
                             <Header
                                 height={HEADER_HEIGHT}
                                 sx={{ borderBottom: 0 }}
-                                mb={120}
+                                mx={100}
                             >
                                 <Container className={classes.inner} fluid>
                                     <Group>
                                         <Text> Logo</Text>
                                     </Group>
-
-                                    <ActionIcon
-                                        color={'dark.5'}
-                                        size={'lg'}
-                                        style={{ alignItems: 'right' }}
+                                    <Tooltip
+                                        label="CMD + K"
+                                        withArrow
+                                        color={light ? 'dark.5' : 'gray.7'}
                                     >
-                                        <IconCommand size={26} />
-                                    </ActionIcon>
+                                        <ActionIcon
+                                            color={light ? 'dark.5' : 'gray.2'}
+                                            size={'lg'}
+                                            style={{ alignItems: 'right' }}
+                                            onClick={() => toggleColorScheme()}
+                                        >
+                                            <IconCommand size={26} />
+                                        </ActionIcon>
+                                    </Tooltip>
                                 </Container>
                             </Header>
                         }
@@ -85,7 +93,6 @@ export default function App(props: AppProps) {
                             </Footer>
                         }
                     >
-                        {' '}
                         <Component {...pageProps} />
                     </AppShell>
                 </MantineProvider>

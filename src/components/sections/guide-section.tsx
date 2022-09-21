@@ -4,20 +4,29 @@ import {
     SimpleGrid,
     Skeleton,
     useMantineTheme,
+    Text,
+    MantineProvider,
 } from '@mantine/core'
 
-const PRIMARY_COL_HEIGHT = 200
+const PRIMARY_COL_HEIGHT = 250
 const PRIMARY_COL_WIDTH = 300
 
 export function GuideSection() {
     const theme = useMantineTheme()
 
     return (
-        <Container size="lg">
+        <div>
+            <MantineProvider theme={{ fontFamily: 'Caveat, handwriting' }}>
+                <Text size={35} weight={'bold'} align={'center'}>
+                    {' '}
+                    My Guides (...in progess)
+                </Text>
+            </MantineProvider>
             <SimpleGrid
                 cols={3}
-                spacing="md"
                 breakpoints={[{ maxWidth: 'sm', cols: 1 }]}
+                spacing={'xl'}
+                ml={35}
             >
                 <Skeleton
                     height={PRIMARY_COL_HEIGHT}
@@ -38,6 +47,6 @@ export function GuideSection() {
                     animate={false}
                 />
             </SimpleGrid>
-        </Container>
+        </div>
     )
 }

@@ -1,4 +1,4 @@
-import { Space } from '@mantine/core'
+import { Container, Space } from '@mantine/core'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -14,10 +14,11 @@ const Home: NextPage = () => {
                 <meta name="description" content="Tregalloway.com" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-
-            <HomeHero />
-            <Space h={60} />
-            <GuideSection />
+            <Container size={'lg'}>
+                <HomeHero />
+                <Space h={60} />
+                <GuideSection />
+            </Container>
         </div>
     )
 }
