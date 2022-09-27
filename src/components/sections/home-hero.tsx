@@ -1,9 +1,13 @@
 import {
-    Container,
+    Box,
+    Text,
     Grid,
     SimpleGrid,
     Skeleton,
     useMantineTheme,
+    Stack,
+    Title,
+    Group,
 } from '@mantine/core'
 
 const PRIMARY_COL_HEIGHT = 400
@@ -18,7 +22,14 @@ export function HomeHero() {
             spacing="md"
             breakpoints={[{ maxWidth: 'sm', cols: 1 }]}
         >
-            <Skeleton height={PRIMARY_COL_HEIGHT} radius="md" animate={false} />
+            <Box>
+                <Stack>
+                    <Title>Tre&apos; Galloway</Title>
+                    <Text size={18} weight={'bold'} color={'teal'}>
+                        Frontend Developer / Content Creator / Reader
+                    </Text>
+                </Stack>
+            </Box>
             <Grid gutter="md">
                 <Grid.Col>
                     <Skeleton

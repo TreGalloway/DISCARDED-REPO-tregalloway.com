@@ -55,7 +55,13 @@ export default function App(props: AppProps) {
                     withNormalizeCSS
                     theme={{
                         colorScheme,
-                        fontFamily: 'Oswald,sans-serif',
+                        fontFamily: 'Montserrat,sans-serif',
+                        fontSizes: {
+                            sm: 16,
+                            md: 32,
+                            lg: 54,
+                            xl: 72,
+                        },
                     }}
                 >
                     <AppShell
@@ -63,12 +69,18 @@ export default function App(props: AppProps) {
                             <Header
                                 height={HEADER_HEIGHT}
                                 sx={{ borderBottom: 0 }}
-                                mx={100}
                             >
                                 <Container className={classes.inner} fluid>
-                                    <Group>
-                                        <Text> Logo</Text>
-                                    </Group>
+                                    <MantineProvider
+                                        theme={{
+                                            fontFamily: 'Caveat, handwriting',
+                                        }}
+                                    >
+                                        <Group>
+                                            <Text size={25}> TG</Text>
+                                        </Group>
+                                    </MantineProvider>
+
                                     <Tooltip
                                         label="CMD + K"
                                         withArrow
@@ -88,7 +100,6 @@ export default function App(props: AppProps) {
                         }
                         footer={
                             <Footer height={60} p="md">
-                                {' '}
                                 Footer
                             </Footer>
                         }
