@@ -7,6 +7,8 @@ import {
     useMantineTheme,
     Stack,
     Title,
+    Badge,
+    Image,
     Group,
 } from '@mantine/core'
 
@@ -25,13 +27,31 @@ export function HomeHero() {
             <Box>
                 <Stack>
                     <Title>Tre&apos; Galloway</Title>
-                    <Text size={18} weight={'bold'} color={'teal'}>
-                        Frontend Developer / Content Creator / Reader
-                    </Text>
+
+                    <Text size={18} weight={'bold'} color={'teal'}></Text>
                 </Stack>
+
+                <Group>
+                    <Badge variant="gradient">Developer</Badge>
+                    <Badge variant="gradient"> Content Creator</Badge>
+                    <Badge variant="gradient"> Reader</Badge>
+                </Group>
             </Box>
             <Grid gutter="md">
-                <Grid.Col>
+                {/* <Skeleton
+                        height={SECONDARY_COL_HEIGHT}
+                        radius="md"
+                        animate={false}
+                    /> */}
+                <Image
+                    width={400}
+                    height={220}
+                    src={null}
+                    alt="With default placeholder"
+                    withPlaceholder
+                />
+
+                {/* <Grid.Col span={6}>
                     <Skeleton
                         height={SECONDARY_COL_HEIGHT}
                         radius="md"
@@ -44,14 +64,7 @@ export function HomeHero() {
                         radius="md"
                         animate={false}
                     />
-                </Grid.Col>
-                <Grid.Col span={6}>
-                    <Skeleton
-                        height={SECONDARY_COL_HEIGHT}
-                        radius="md"
-                        animate={false}
-                    />
-                </Grid.Col>
+                </Grid.Col> */}
             </Grid>
         </SimpleGrid>
     )

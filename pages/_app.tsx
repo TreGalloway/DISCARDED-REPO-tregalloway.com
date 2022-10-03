@@ -62,6 +62,20 @@ export default function App(props: AppProps) {
                             lg: 54,
                             xl: 72,
                         },
+                        headings: {
+                            fontWeight: 'bold',
+                            sizes: {
+                                h1: { fontSize: 32 },
+                                h2: { fontSize: 26 },
+                                h3: { fontSize: 20 },
+                            },
+                        },
+                        defaultGradient: {
+                            from: '#06d6a0',
+                            to: 'blue',
+                            deg: 45,
+                        },
+                        loader: 'oval',
                     }}
                 >
                     <AppShell
