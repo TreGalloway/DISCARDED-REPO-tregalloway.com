@@ -6,6 +6,7 @@ import {
     useMantineTheme,
     Text,
     Divider,
+    Group,
 } from '@mantine/core'
 import GuideCard from '../cards/guide-card'
 
@@ -14,8 +15,10 @@ export function GuideSection() {
 
     return (
         <div>
-            <Divider size="lg" orientation="vertical" />
-            <h3>My Guides</h3>
+            <Group>
+                <Divider size="lg" orientation="vertical" />
+                <Text size={32}>My Guides</Text>
+            </Group>
         </div>
     )
 }

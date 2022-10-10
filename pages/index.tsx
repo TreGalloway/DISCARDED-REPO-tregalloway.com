@@ -1,4 +1,4 @@
-import { Container, Group, Space } from '@mantine/core'
+import { Container, Group, SimpleGrid, Space } from '@mantine/core'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -18,10 +18,10 @@ const Home: NextPage = () => {
             <Container size={'lg'}>
                 <HomeHero />
                 <Space h={60} />
-                <Group>
+                <SimpleGrid cols={2}>
                     <BlogSection />
                     <GuideSection />
-                </Group>
+                </SimpleGrid>
             </Container>
         </div>
     )

@@ -15,7 +15,9 @@ import {
     createStyles,
     Tooltip,
 } from '@mantine/core'
-import { IconCommand } from '@tabler/icons'
+import { SpotlightProvider, openSpotlight } from '@mantine/spotlight'
+import actions from '../src/cmd/cmd'
+import { IconCommand, IconSearch } from '@tabler/icons'
 
 const HEADER_HEIGHT = 60
 
@@ -56,12 +58,10 @@ export default function App(props: AppProps) {
                     theme={{
                         colorScheme,
                         fontFamily: 'Montserrat,sans-serif',
-                        fontSizes: {
-                            sm: 16,
-                            md: 32,
-                            lg: 54,
-                            xl: 72,
-                        },
+                        // fontSizes: {
+                        //     sm: 16,
+                        //     md: 32,
+                        // },
                         headings: {
                             fontWeight: 'bold',
                             sizes: {
@@ -78,48 +78,65 @@ export default function App(props: AppProps) {
                         loader: 'oval',
                     }}
                 >
-                    <AppShell
-                        header={
-                            <Header
-                                height={HEADER_HEIGHT}
-                                sx={{ borderBottom: 0 }}
-                            >
-                                <Container className={classes.inner} fluid>
-                                    <MantineProvider
-                                        theme={{
-                                            fontFamily: 'Caveat, handwriting',
-                                        }}
+                    <SpotlightProvider
+                        actions={actions}
+                        searchIcon={<IconSearch size={18} />}
+                        searchPlaceholder="Search..."
+                        shortcut="mod + k"
+                        limit={6}
+                        highlightQuery
+                        highlightColor={'teal'}
+                        transition="slide-up"
+                        nothingFoundMessage="Nothing found..."
+                    >
+                        <AppShell
+                            header={
+                                <Header
+                                    height={HEADER_HEIGHT}
+                                    sx={{ borderBottom: 0 }}
+                                >
+                                    <Container
+                                        className={classes.inner}
+                                        size={'lg'}
                                     >
                                         <Group>
-                                            <Text size={25}> TG</Text>
+                                            <Text size={25} weight={'bolder'}>
+                                                TG
+                                            </Text>
                                         </Group>
-                                    </MantineProvider>
 
-                                    <Tooltip
-                                        label="CMD + K"
-                                        withArrow
-                                        color={light ? 'dark.5' : 'gray.7'}
-                                    >
-                                        <ActionIcon
-                                            color={light ? 'dark.5' : 'gray.2'}
-                                            size={'lg'}
-                                            style={{ alignItems: 'right' }}
-                                            onClick={() => toggleColorScheme()}
+                                        <Tooltip
+                                            label="CMD + K"
+                                            withArrow
+                                            color={light ? 'dark.5' : 'gray.7'}
                                         >
-                                            <IconCommand size={26} />
-                                        </ActionIcon>
-                                    </Tooltip>
-                                </Container>
-                            </Header>
-                        }
-                        footer={
-                            <Footer height={60} p="md">
-                                Footer
-                            </Footer>
-                        }
-                    >
-                        <Component {...pageProps} />
-                    </AppShell>
+                                            <ActionIcon
+                                                color={
+                                                    light ? 'dark.5' : 'gray.2'
+                                                }
+                                                size={'lg'}
+                                                style={{ alignItems: 'right' }}
+                                                onClick={() => openSpotlight()}
+                                            >
+                                                <IconCommand size={26} />
+                                            </ActionIcon>
+                                        </Tooltip>
+                                    </Container>
+                                </Header>
+                            }
+                            footer={
+                                <Footer height={60} p="md">
+                                    <Container size={'lg'}>
+                                        <Text>Footer</Text>
+                                    </Container>
+                                </Footer>
+                            }
+                        >
+                            <Container size={'lg'}>
+                                <Component {...pageProps} />
+                            </Container>
+                        </AppShell>
+                    </SpotlightProvider>
                 </MantineProvider>
             </ColorSchemeProvider>
         </>
