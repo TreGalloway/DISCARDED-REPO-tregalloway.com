@@ -4,6 +4,7 @@ import {
     openSpotlight,
     useSpotlight,
 } from '@mantine/spotlight'
+import Link from 'next/link'
 import type { SpotlightAction } from '@mantine/spotlight'
 import {
     IconHome,
@@ -18,7 +19,7 @@ const actions: SpotlightAction[] = [
         title: 'Home',
         group: 'Pages',
         description: 'Get to home page',
-        onTrigger: () => <a href="/home">Home</a>,
+        onTrigger: () => <Link href={'/'}>Home</Link>,
         icon: <IconHome size={18} />,
     },
 
@@ -26,7 +27,7 @@ const actions: SpotlightAction[] = [
         title: 'Blog',
         group: 'Pages',
         description: 'My blog posts',
-        onTrigger: () => {},
+        onTrigger: () => <Link href={'/blog'}>Blog</Link>,
         icon: <IconArticle size={18} />,
     },
     {

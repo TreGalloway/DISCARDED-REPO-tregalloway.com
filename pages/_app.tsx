@@ -86,8 +86,9 @@ export default function App(props: AppProps) {
                         limit={6}
                         highlightQuery
                         highlightColor={'teal'}
-                        transition="slide-up"
                         nothingFoundMessage="Nothing found..."
+                        transitionDuration={300}
+                        transition="slide-down"
                     >
                         <AppShell
                             header={
