@@ -16,6 +16,7 @@ import {
     password,
     timestamp,
     select,
+    image,
 } from '@keystone-6/core/fields'
 
 // the document field is a more complicated field, so it has it's own package
@@ -71,6 +72,7 @@ export const lists: Lists = {
         fields: {
             title: text({ validation: { isRequired: true } }),
             description: text({ validation: { isRequired: true } }),
+            image: image({ storage: '' }),
             slug: text({
                 isIndexed: 'unique',
                 validation: { isRequired: true },

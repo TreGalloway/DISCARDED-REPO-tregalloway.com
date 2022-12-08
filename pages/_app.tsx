@@ -25,7 +25,7 @@ const useStyles = createStyles((theme) => ({
     inner: {
         height: HEADER_HEIGHT,
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'right',
         alignItems: 'center',
     },
 }))
@@ -94,22 +94,18 @@ export default function App(props: AppProps) {
                             header={
                                 <Header
                                     height={HEADER_HEIGHT}
-                                    sx={{ borderBottom: 0 }}
+                                    sx={{
+                                        borderBottom: 0,
+                                    }}
                                 >
                                     <Container
                                         className={classes.inner}
                                         size={'lg'}
                                     >
-                                        <Group>
-                                            <Text size={25} weight={'bolder'}>
-                                                TG
-                                            </Text>
-                                        </Group>
-
                                         <Tooltip
                                             label="CMD + K"
                                             withArrow
-                                            color={light ? 'dark.5' : 'gray.7'}
+                                            color={light ? 'dark.3' : 'gray.4'}
                                         >
                                             <ActionIcon
                                                 color={
@@ -119,7 +115,7 @@ export default function App(props: AppProps) {
                                                 style={{ alignItems: 'right' }}
                                                 onClick={() => openSpotlight()}
                                             >
-                                                <IconCommand size={26} />
+                                                <IconCommand size={24} />
                                             </ActionIcon>
                                         </Tooltip>
                                     </Container>

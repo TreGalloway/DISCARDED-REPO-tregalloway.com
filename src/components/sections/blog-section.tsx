@@ -1,12 +1,13 @@
-import { Text, Group, Box, Divider } from '@mantine/core'
+import { Text, Box, Divider, Stack, Title } from '@mantine/core'
+import PostCard from '../cards/post-card'
 
 export default function BlogSection() {
     return (
         <>
-            <Group>
-                <Divider size="md" orientation="vertical" />
-                <Text size={32}> Latest Posts</Text>
-            </Group>
+            <Stack>
+                <Title align="center"> Latest Posts</Title>
+                <PostCard />
+            </Stack>
         </>
     )
 }

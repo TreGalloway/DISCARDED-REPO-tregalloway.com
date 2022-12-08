@@ -51,6 +51,7 @@ var lists = {
     fields: {
       title: (0, import_fields.text)({ validation: { isRequired: true } }),
       description: (0, import_fields.text)({ validation: { isRequired: true } }),
+      image: (0, import_fields.image)({ storage: "" }),
       slug: (0, import_fields.text)({
         isIndexed: "unique",
         validation: { isRequired: true }
