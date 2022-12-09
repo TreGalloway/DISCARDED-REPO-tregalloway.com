@@ -1,7 +1,9 @@
 "use strict";
+var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __export = (target, all) => {
   for (var name in all)
@@ -15,6 +17,10 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // keystone.ts
@@ -51,7 +57,7 @@ var lists = {
     fields: {
       title: (0, import_fields.text)({ validation: { isRequired: true } }),
       description: (0, import_fields.text)({ validation: { isRequired: true } }),
-      image: (0, import_fields.image)({ storage: "" }),
+      image: (0, import_fields.image)({ storage: "my_local_images" }),
       slug: (0, import_fields.text)({
         isIndexed: "unique",
         validation: { isRequired: true }
@@ -276,6 +282,15 @@ var session = (0, import_session.statelessSessions)({
 });
 
 // keystone.ts
+var import_dotenv = __toESM(require("dotenv"));
+import_dotenv.default.config();
+var {
+  S3_BUCKET_NAME: bucketName = "keystone-test",
+  S3_REGION: region = "ap-southeast-2",
+  S3_ACCESS_KEY_ID: accessKeyId = "keystone",
+  S3_SECRET_ACCESS_KEY: secretAccessKey = "keystone",
+  ASSET_BASE_URL: baseUrl = "http://localhost:3000"
+} = process.env;
 var keystone_default = withAuth(
   (0, import_core2.config)({
     db: {
@@ -283,7 +298,18 @@ var keystone_default = withAuth(
       url: "file:./keystone.db"
     },
     lists,
-    session
+    session,
+    storage: {
+      my_local_images: {
+        kind: "local",
+        type: "image",
+        generateUrl: (path) => `${baseUrl}/images${path}`,
+        serverRoute: {
+          path: "/images"
+        },
+        storagePath: "public/images"
+      }
+    }
   })
 );
 // Annotate the CommonJS export names for ESM import in node:

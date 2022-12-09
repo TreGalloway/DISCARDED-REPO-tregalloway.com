@@ -4,3 +4,15 @@ export type cmdtype = {
     description: string
     icon?: any
 }
+
+export type ThumbnailProps = {
+    imageSrc: string
+    caption:
+        | {
+              discriminant: false
+          }
+        | {
+              discriminant: true
+              value: React.ReactNode
+          }
+}

@@ -138,6 +138,8 @@ type Post {
   id: ID!
   title: String
   description: String
+  image: ImageFieldOutput
+  slug: String
   publishedAt: DateTime
   status: String
   content: Post_content_Document
@@ -146,12 +148,29 @@ type Post {
   tagsCount(where: TagWhereInput! = {}): Int
 }
 
+type ImageFieldOutput {
+  id: ID!
+  filesize: Int!
+  width: Int!
+  height: Int!
+  extension: ImageExtension!
+  url: String!
+}
+
+enum ImageExtension {
+  jpg
+  png
+  webp
+  gif
+}
+
 type Post_content_Document {
   document(hydrateRelationships: Boolean! = false): JSON!
 }
 
 input PostWhereUniqueInput {
   id: ID
+  slug: String
 }
 
 input PostWhereInput {
@@ -161,6 +180,7 @@ input PostWhereInput {
   id: IDFilter
   title: StringFilter
   description: StringFilter
+  slug: StringFilter
   publishedAt: DateTimeNullableFilter
   status: StringNullableFilter
   author: UserWhereInput
@@ -205,6 +225,7 @@ input PostOrderByInput {
   id: OrderDirection
   title: OrderDirection
   description: OrderDirection
+  slug: OrderDirection
   publishedAt: OrderDirection
   status: OrderDirection
 }
@@ -212,12 +233,21 @@ input PostOrderByInput {
 input PostUpdateInput {
   title: String
   description: String
+  image: ImageFieldInput
+  slug: String
   publishedAt: DateTime
   status: String
   content: JSON
   author: UserRelateToOneForUpdateInput
   tags: TagRelateToManyForUpdateInput
 }
+
+input ImageFieldInput {
+  upload: Upload!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
 
 input UserRelateToOneForUpdateInput {
   create: UserCreateInput
@@ -240,6 +270,8 @@ input PostUpdateArgs {
 input PostCreateInput {
   title: String
   description: String
+  image: ImageFieldInput
+  slug: String
   publishedAt: DateTime
   status: String
   content: JSON

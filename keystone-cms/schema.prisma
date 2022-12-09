@@ -22,15 +22,21 @@ model User {
 }
 
 model Post {
-  id          String    @id @default(cuid())
-  title       String    @default("")
-  description String    @default("")
-  publishedAt DateTime?
-  status      String?   @default("draft")
-  content     String    @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
-  author      User?     @relation("Post_author", fields: [authorId], references: [id])
-  authorId    String?   @map("author")
-  tags        Tag[]     @relation("Post_tags")
+  id              String    @id @default(cuid())
+  title           String    @default("")
+  description     String    @default("")
+  image_filesize  Int?
+  image_extension String?
+  image_width     Int?
+  image_height    Int?
+  image_id        String?
+  slug            String    @unique @default("")
+  publishedAt     DateTime?
+  status          String?   @default("draft")
+  content         String    @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
+  author          User?     @relation("Post_author", fields: [authorId], references: [id])
+  authorId        String?   @map("author")
+  tags            Tag[]     @relation("Post_tags")
 
   @@index([authorId])
 }

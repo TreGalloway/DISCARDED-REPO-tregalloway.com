@@ -72,7 +72,7 @@ export const lists: Lists = {
         fields: {
             title: text({ validation: { isRequired: true } }),
             description: text({ validation: { isRequired: true } }),
-            image: image({ storage: '' }),
+            image: image({ storage: 'my_local_images' }),
             slug: text({
                 isIndexed: 'unique',
                 validation: { isRequired: true },
