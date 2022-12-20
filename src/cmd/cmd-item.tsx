@@ -1,3 +1,3 @@
-import { cmdtype } from '../../data/types'
+import { cmdtype } from '../../lib/types'
 
 type Props = cmdtype

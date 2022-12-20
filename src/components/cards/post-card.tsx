@@ -1,4 +1,4 @@
-import { Grid, Image, Text, Badge, Stack } from '@mantine/core'
+import { Grid, Image, Text, Badge, Stack, Title } from '@mantine/core'
 
 export default function PostCard() {
     return (
@@ -15,7 +15,7 @@ export default function PostCard() {
             </Grid.Col>
             <Grid.Col span={6}>
                 <Stack>
-                    <Text>Title</Text>
+                    <Title>{post.title}</Title>
                     <Text>Description</Text>
                 </Stack>
             </Grid.Col>

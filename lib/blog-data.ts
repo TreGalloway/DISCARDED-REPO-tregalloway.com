@@ -1,10 +1,10 @@
-import { fetchGraphQL, gql } from './graphql'
-import type { BlogpageQuery } from '../.generated/types'
+import { fetchGraphQL, gql } from '../apollo/graphql'
+import type BlogpageQuery from '../apollo/.generated/types'
 
 export type BlogpageData = {
     post: NonNullable<BlogpageQuery['post']>
-    meta: BlogpageQuery['meta']
-    config: BlogpageQuery['config']
+    // meta: BlogpageQuery['meta']
+    // config: BlogpageQuery['config']
 }
 
 export async function fetchBlogpageData(slug: string): Promise<BlogpageData> {
@@ -56,12 +56,12 @@ export async function fetchBlogpageData(slug: string): Promise<BlogpageData> {
     )
 
     const post = data?.post as BlogpageData['post']
-    const meta = data?.meta
-    const config = data?.config
+    // const meta = data?.meta
+    // const config = data?.config
 
     return {
         post,
-        meta,
-        config,
+        // meta,
+        // config,
     }
 }
