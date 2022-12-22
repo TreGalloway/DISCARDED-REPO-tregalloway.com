@@ -19,11 +19,11 @@ const Home: NextPage = () => {
             <Container size={'lg'}>
                 <HomeHero />
                 <Space h={60} />
-                <VideoSection />
+                <NewsletterSection />
                 <Space h={60} />
                 <BlogSection />
                 <Space h={60} />
-                <NewsletterSection />
+                <VideoSection />
             </Container>
         </div>
     )

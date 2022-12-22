@@ -4,7 +4,7 @@ import VideoCard from '../cards/video-card'
 export default function VideoSection() {
     return (
         <Stack>
-            <Title align="center">Featured Videos</Title>
+            <Title align="left">Featured Videos</Title>
             <Grid>
                 <VideoCard />
             </Grid>

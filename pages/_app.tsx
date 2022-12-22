@@ -57,12 +57,9 @@ export default function App(props: AppProps) {
                     withNormalizeCSS
                     theme={{
                         colorScheme,
-                        fontFamily: 'Montserrat,sans-serif',
-                        // fontSizes: {
-                        //     sm: 16,
-                        //     md: 32,
-                        // },
+                        fontFamily: 'Poppins,sans-serif',
                         headings: {
+                            fontFamily: 'Poppins,sans-serif',
                             fontWeight: 'bold',
                             sizes: {
                                 h1: { fontSize: 32 },
@@ -121,13 +118,13 @@ export default function App(props: AppProps) {
                                     </Container>
                                 </Header>
                             }
-                            footer={
-                                <Footer height={60} p="md">
-                                    <Container size={'lg'}>
-                                        <Text>Footer</Text>
-                                    </Container>
-                                </Footer>
-                            }
+                            // footer={
+                            //     <Footer height={60} p="md">
+                            //         <Container size={'lg'}>
+                            //             <Text>Footer</Text>
+                            //         </Container>
+                            //     </Footer>
+                            // }
                         >
                             <Container size={'lg'}>
                                 <Component {...pageProps} />

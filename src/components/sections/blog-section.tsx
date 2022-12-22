@@ -5,7 +5,7 @@ export default function BlogSection() {
     return (
         <>
             <Stack>
-                <Title align="center"> Latest Posts</Title>
+                <Title align="left"> Latest Posts</Title>
                 <PostCard />
             </Stack>
         </>
