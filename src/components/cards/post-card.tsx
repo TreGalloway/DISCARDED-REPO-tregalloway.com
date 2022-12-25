@@ -1,3 +1,5 @@
+import Link from 'next/link'
+import {fetchGraphQL, gql} from '../../../apollo/graphql'
 import { createStyles, Card, Image, Avatar, Text, Group } from '@mantine/core'
 
 const useStyles = createStyles((theme) => ({
@@ -19,6 +21,7 @@ const useStyles = createStyles((theme) => ({
 
 interface ArticleCardVerticalProps {
     image: string
+    slug: string
     category: string
     title: string
     date: string
@@ -30,6 +33,7 @@ interface ArticleCardVerticalProps {
 
 export default function PostCard({
     image,
+    slug,
     category,
     title,
     date,
@@ -37,41 +41,43 @@ export default function PostCard({
 }: ArticleCardVerticalProps) {
     const { classes } = useStyles()
     return (
-        <Card withBorder radius="md" p={0} className={classes.card}>
-            <Group noWrap spacing={0}>
-                <Image
-                    src={image}
-                    height={140}
-                    width={140}
-                    withPlaceholder
-                    alt=""
-                />
-                <div className={classes.body}>
-                    <Text
-                        transform="uppercase"
-                        color="dimmed"
-                        weight={700}
-                        size="xs"
-                    >
-                        {category}
-                    </Text>
-                    <Text className={classes.title} mt="xs" mb="md">
-                        {title}
-                    </Text>
-                    <Group noWrap spacing="xs">
-                        {/* <Group spacing="xs" noWrap>
+        <Link href={`/blog/${slug}`}>
+            <Card withBorder radius="md" p={0} className={classes.card}>
+                <Group noWrap spacing={0}>
+                    <Image
+                        src={image}
+                        height={140}
+                        width={140}
+                        withPlaceholder
+                        alt=""
+                    />
+                    <div className={classes.body}>
+                        <Text
+                            transform="uppercase"
+                            color="dimmed"
+                            weight={700}
+                            size="xs"
+                        >
+                            {category}
+                        </Text>
+                        <Text className={classes.title} mt="xs" mb="md">
+                            {title}
+                        </Text>
+                        <Group noWrap spacing="xs">
+                            {/* <Group spacing="xs" noWrap>
                             <Avatar size={20} src={author.avatar} />
                             <Text size="xs">{author.name}</Text>
                         </Group> */}
-                        <Text size="xs" color="dimmed">
-                            •
-                        </Text>
-                        <Text size="xs" color="dimmed">
-                            {date}
-                        </Text>
-                    </Group>
-                </div>
-            </Group>
-        </Card>
+                            <Text size="xs" color="dimmed">
+                                •
+                            </Text>
+                            <Text size="xs" color="dimmed">
+                                {date}
+                            </Text>
+                        </Group>
+                    </div>
+                </Group>
+            </Card>
+        </Link>
     )
 }
