@@ -1,5 +1,8 @@
 import Link from 'next/link'
-import {fetchGraphQL, gql} from '../../../apollo/graphql'
+import useSWR from 'swr'
+import cn from 'classnames'
+import fetcher from '../../../lib/fetcher'
+
 import { createStyles, Card, Image, Avatar, Text, Group } from '@mantine/core'
 
 const useStyles = createStyles((theme) => ({
@@ -25,6 +28,7 @@ interface ArticleCardVerticalProps {
     category: string
     title: string
     date: string
+    excerpt: string
     author: {
         name: string
         avatar: string
@@ -37,7 +41,7 @@ export default function PostCard({
     category,
     title,
     date,
-    author,
+    excerpt,
 }: ArticleCardVerticalProps) {
     const { classes } = useStyles()
     return (
@@ -74,6 +78,7 @@ export default function PostCard({
                             <Text size="xs" color="dimmed">
                                 {date}
                             </Text>
+                            <Text>{excerpt}</Text>
                         </Group>
                     </div>
                 </Group>

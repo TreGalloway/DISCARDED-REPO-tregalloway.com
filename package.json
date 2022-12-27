@@ -6,7 +6,8 @@
         "dev": "next -p 3001",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "sanity-start": "sanity start"
     },
     "dependencies": {
         "@apollo/client": "^3.7.3",
@@ -32,19 +33,27 @@
         "@portabletext/react": "^2.0.0",
         "@sanity/client": "^3.4.1",
         "@sanity/image-url": "^1.0.1",
+        "@sanity/scheduled-publishing": "^1.1.0",
         "@tabler/icons": "^1.96.0",
+        "@types/rss": "^0.0.29",
         "dayjs": "^1.11.5",
         "embla-carousel-react": "^7.0.3",
         "graphql": "^16.6.0",
         "next": "12.3.0",
+        "next-mdx-remote": "^4.2.0",
         "next-sanity": "^3.1.8",
         "next-sanity-image": "^5.0.0",
-        "next-seo": "^5.5.0",
+        "next-seo": "^5.15.0",
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "react-player": "^2.11.0",
         "react-use": "^17.4.0",
-        "sanity": "^3.1.2"
+        "reading-time": "^1.5.0",
+        "rehype-code-titles": "^1.1.0",
+        "rss": "^1.2.2",
+        "sanity": "^3.1.2",
+        "sanity-plugin-asset-source-unsplash": "^1.0.1",
+        "sanity-plugin-markdown": "^3.0.1"
     },
     "devDependencies": {
         "@types/node": "18.7.18",
